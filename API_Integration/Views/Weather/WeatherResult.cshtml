@@ -1,0 +1,12 @@
+﻿@model API_Integration.Models.WeatherInfo
+
+@if (Model != null)
+{
+    <h2>Weather in @Model.Name</h2>
+    <p>Temperature: @Model.Main.Temperature °C</p>
+    <p>Humidity: @Model.Main.Humidity %</p>
+}
+else
+{
+    <p>Could not retrieve weather information.</p>
+}

@@ -1,0 +1,48 @@
+﻿<!-- Views/FileUpload/Index.cshtml -->
+@model IEnumerable<FileUpload.Models.UploadedFile>
+@{
+    ViewBag.Title = "File Upload";
+}
+
+<h2>File Upload</h2>
+
+<!-- Display message if available -->
+@if (ViewBag.Message != null)
+{
+    <p>@ViewBag.Message</p>
+}
+
+<!-- File upload form -->
+@using (Html.BeginForm("UploadFile", "FileUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label for="uploadedFile">Choose a file to upload:</label>
+    <br />
+    <input type="file" name="uploadedFile" id="uploadedFile" />
+    <br />
+    <br />
+    <input type="submit" value="Upload" />
+}
+<br /><br />
+
+<h3>Uploaded Files</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>File Name</th>
+            <th>Download</th>
+            <th>Upload Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var file in Model)
+        {
+            <tr>
+                <td>@file.FileName</td>
+                <td>
+                    <a href="@Url.Action("DownloadFile", "FileUpload", new { id = file.FileId })">Download</a>
+                </td>
+                <td>@file.UploadDate</td>
+            </tr>
+        }
+    </tbody>
+</table>

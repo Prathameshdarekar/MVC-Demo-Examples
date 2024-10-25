@@ -1,0 +1,11 @@
+﻿@model LayoutandPartialViews.Models.Product
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Product Details";
+}
+
+<h2>@Model.Name</h2>
+<p>Price: $@Model.Price</p>
+<p>Product ID: @Model.Id</p>
+
+<a href="@Url.Action("List", "Product")">Back to Product List</a>

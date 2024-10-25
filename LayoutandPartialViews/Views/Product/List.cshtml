@@ -1,0 +1,15 @@
+﻿@model IEnumerable<LayoutandPartialViews.Models.Product>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Product List";
+    ViewData["Alerts"] = new List<string> { "Welcome to the Product List!" }; // Example alert
+}
+
+@Html.Partial("_Alerts") <!-- Render alerts -->
+
+<h2>Product List</h2>
+
+@foreach (var product in Model)
+{
+    @Html.Partial("_Product", product)
+}

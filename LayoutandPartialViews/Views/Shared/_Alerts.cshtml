@@ -1,0 +1,16 @@
+﻿@using System.Web.Mvc
+@{
+    var alerts = ViewData["Alerts"] as List<string>;
+}
+
+@if (alerts != null && alerts.Any())
+{
+    <div class="alert alert-info" role="alert">
+        <ul>
+            @foreach (var alert in alerts)
+            {
+                <li>@alert</li>
+            }
+        </ul>
+    </div>
+}
